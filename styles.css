@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#header {
+    background-color: #0032d6e7;
+    color: white;
+    text-align: center;
+}
+
+.container {
+    width: 50%;
+    margin: auto;
+}
+
+.invalid-feedback {
+    display: none;
+}
+
+.d-flex {
+    
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.form-control {
+    width: 100%;
+    height: 2.6rem;
+    padding: 0.5rem;  
+    border-radius: .5rem;
+    border: 1px solid #707070; 
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    gap: 60px;
+}
+
+
+.input {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.btn {
+    margin-top: 2rem;
+    background-color: #0032d6e7;
+    border: none;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    padding: 1rem;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    margin-bottom: 2rem;
+}
+
+
+.center {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.container-2 {
+    background-color: rgba(211, 211, 211, 0.212);   
+}
+
+.output {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 50%;
+    margin-top: 1rem;
+    padding: 0.5rem;
+}
+
+.btndelete {
+    background-color: red;
+    border: none;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    padding: 0.5rem;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
