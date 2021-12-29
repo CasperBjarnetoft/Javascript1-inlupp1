@@ -19,31 +19,24 @@ body {
     margin: auto;
 }
 
+p {
+    margin: 0;
+}
+
 .invalid-feedback {
     display: none;
 }
 
-.d-flex {
-    
+.dflex {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-.form-control {
+.aligne {
     width: 100%;
-    height: 2.6rem;
-    padding: 0.5rem;  
-    border-radius: .5rem;
-    border: 1px solid #707070; 
-}
-
-.row {
-    width: 100%;
-    display: flex;
     gap: 60px;
 }
-
 
 .input {
     margin-top: 2rem;
