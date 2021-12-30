@@ -1,6 +1,6 @@
 let persons = [
     {
-        id: 'person 1',
+        id: 1,
         firstname: 'First name',
         lastname: 'Last name',
         email: 'Email',
@@ -53,7 +53,7 @@ const listPersons = () => {
         <div  id="${person.id}"class="output">
         <div class="wrap">
             <p>${person.firstname} ${person.lastname}</p>
-            <p class="email">${person.email}</p>
+            <a href="mailto:email@simple.com" class="email">${person.email}</a>
         </div>
 
         <button type="button" id="resetbutton" class="btndelete">X</button>
@@ -78,7 +78,6 @@ regForm.addEventListener('submit', e => {
     }
 
     if(errors.includes(false)) {
-        console.log('inte bra')
 
     }
     else {
@@ -87,15 +86,16 @@ regForm.addEventListener('submit', e => {
             firstname: firstname.value,
             lastname: lastname.value,
             email: email.value,
-            completed: false
+            completed: false,
+            
         }
         persons.push(person);
         listPersons();
         firstname.value = ''
         lastname.value = ''
         email.value = ''
-        console.log('Allt är super bra')
     }
+    
 })
 
 output.addEventListener('click', e => {
