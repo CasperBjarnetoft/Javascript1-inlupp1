@@ -61,6 +61,7 @@ const listPersons = () => {
         <button type="button" id="resetbutton" class="btndelete">X</button>
         </div>
         `
+        return;
     })
 }
 
@@ -92,14 +93,29 @@ regForm.addEventListener('submit', e => {
             
         }
         persons.push(person);
-        let personen = [
-            ...new Map(persons.map((item) => [item["email"], item])).values(),
-        ];
-        console.log(personen)
-        listPersons();
-    }
-})
+        let unique = [];
+        let distinct = [];
+        for( let i = 0; i < persons.length; i++ ){
+        if( !unique[persons[i].email]){
+            distinct.push(persons[i].email);
+            unique[persons[i].email] = 1;
+        }
+        }
 
+        if (distinct.length < persons.length) {
+
+        }
+        else {
+            listPersons();
+            firstname.value = ''
+            lastname.value = ''
+            email.value = ''
+            console.log(distinct)
+        }   
+        console.log(persons.length)
+    }
+
+})
 
 
 output.addEventListener('click', e => {
