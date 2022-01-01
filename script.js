@@ -8,6 +8,8 @@ let persons = [
     }
 ]
 
+
+
 const regForm = document.querySelector('#regform')
 const email = document.querySelector('#email')
 const firstname = document.querySelector('#firstName')
@@ -90,13 +92,15 @@ regForm.addEventListener('submit', e => {
             
         }
         persons.push(person);
+        let personen = [
+            ...new Map(persons.map((item) => [item["email"], item])).values(),
+        ];
+        console.log(personen)
         listPersons();
-        firstname.value = ''
-        lastname.value = ''
-        email.value = ''
     }
-    
 })
+
+
 
 output.addEventListener('click', e => {
     if(e.target.type == 'button') {
