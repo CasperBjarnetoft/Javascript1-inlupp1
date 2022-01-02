@@ -96,3 +96,10 @@ p {
     display: inline-block;
     cursor: pointer;
 }
+
+#errortext {
+    text-align: center;
+    color: red;
+    font-size: 1.2rem;
+    font-weight: 700;
+}

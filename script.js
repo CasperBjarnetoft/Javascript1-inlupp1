@@ -15,6 +15,7 @@ const email = document.querySelector('#email')
 const firstname = document.querySelector('#firstName')
 const lastname = document.querySelector('#lastName')
 const output = document.querySelector('#person')
+const errortext = document.querySelector('#errortext')
 
 const validateText = (id) => {
     let input = document.querySelector(id)
@@ -92,25 +93,29 @@ regForm.addEventListener('submit', e => {
             completed: false,
             
         }
-        persons.push(person);
+        persons.push(person)
         let unique = [];
         let distinct = [];
         for( let i = 0; i < persons.length; i++ ){
         if( !unique[persons[i].email]){
             distinct.push(persons[i].email);
-            unique[persons[i].email] = 1;
+            unique[persons[i].email] = 2;
         }
         }
+        
 
-        if (distinct.length < persons.length) {
-
-        }
-        else {
+        if (distinct.length === persons.length) {
             listPersons();
+            errortext.innerHTML = ``
             firstname.value = ''
             lastname.value = ''
             email.value = ''
             console.log(distinct)
+        }
+        else {
+            persons.pop();
+            email.value = ''
+            errortext.innerHTML = `<p>Mailen existerar redan</p>`
         }   
         console.log(persons.length)
     }
