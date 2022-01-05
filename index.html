@@ -25,14 +25,14 @@
                     <div class="input">
                         <input type="text" class="form-control" placeholder="First name" id="firstName">
                         <div class="invalid-feedback">
-                            Please enter your first name.
+                            Please enter your first name. Need to be 3 or more characters.
                         </div>
                     </div>
         
                     <div class="input">
                         <input type="text" class="form-control" placeholder="Last name" id="lastName">
                         <div class="invalid-feedback">
-                            Please enter your last name.
+                            Please enter your last name. Need to be 3 or more characters.
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
     
                 <div class="input">
                     <input type="email" class="form-control" placeholder="Email" id="email">
-                    <div class="invalid-feedback">
+                    <div id="validmail" class="invalid-feedback">
                         Please enter your email.
                     </div>
                 </div>
@@ -48,8 +48,6 @@
 
             </div>
         </form>
-
-        <p id="errortext"></p>
     </div>
 
     <div class="container-2">

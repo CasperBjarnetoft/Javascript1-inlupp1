@@ -8,19 +8,17 @@ let persons = [
     }
 ]
 
-
-
 const regForm = document.querySelector('#regform')
 const email = document.querySelector('#email')
 const firstname = document.querySelector('#firstName')
 const lastname = document.querySelector('#lastName')
 const output = document.querySelector('#person')
-const errortext = document.querySelector('#errortext')
+const valid = document.querySelector('#validmail')
 
 const validateText = (id) => {
     let input = document.querySelector(id)
 
-    if(input.value === '' || input.value.length < 2) {
+    if(input.value === '' || input.value.length < 3) {
         input.classList.remove('is-valid');
         input.classList.add('is-invalid')
         input.focus();
@@ -59,10 +57,11 @@ const listPersons = () => {
             <a href="mailto:email@simple.com" class="email">${person.email}</a>
         </div>
 
+        <div>
+        <button type="submit" id="changevalue" class="btnchange">Change</button>
         <button type="button" id="resetbutton" class="btndelete">X</button>
         </div>
         `
-        return;
     })
 }
 
@@ -106,26 +105,34 @@ regForm.addEventListener('submit', e => {
 
         if (distinct.length === persons.length) {
             listPersons();
-            errortext.innerHTML = ``
+            email.classList.remove('is-invalid')
             firstname.value = ''
             lastname.value = ''
             email.value = ''
-            console.log(distinct)
+            // console.log(distinct)
         }
         else {
             persons.pop();
+            email.classList.add('is-invalid')
+            valid.innerHTML = `<p>email already exist</p>`
             email.value = ''
-            errortext.innerHTML = `<p>Mailen existerar redan</p>`
         }   
-        console.log(persons.length)
+        // console.log(persons.length)
     }
 
 })
 
 
+
 output.addEventListener('click', e => {
     if(e.target.type == 'button') {
-        persons = persons.filter(person => person.id !== e.target.parentNode.id);
+        persons = persons.filter(person => person.id !== e.target.parentNode.parentNode.id);
         listPersons()
+    }
+    else if (e.target.type == 'submit') {
+        firstname.value = "Firtsname";
+        lastname.value = "lastname";
+        email.value = "aa.ss@as.aa";
+        listPersons();
     }
 })
