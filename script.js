@@ -96,7 +96,7 @@ regForm.addEventListener('submit', e => {
         let unique = [];
         let distinct = [];
         for( let i = 0; i < persons.length; i++ ){
-        if( !unique[persons[i].email]){
+        if( !unique[persons[i].email]){g
             distinct.push(persons[i].email);
             unique[persons[i].email] = 2;
         }
