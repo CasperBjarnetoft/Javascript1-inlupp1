@@ -1,6 +1,6 @@
 let persons = [
     {
-        id: 1,
+        id: "1",
         firstname: 'First name',
         lastname: 'Last name',
         email: 'Email',
@@ -102,7 +102,6 @@ regForm.addEventListener('submit', e => {
         }
         }
         
-
         if (distinct.length === persons.length) {
             listPersons();
             email.classList.remove('is-invalid')
@@ -119,10 +118,8 @@ regForm.addEventListener('submit', e => {
         }   
         // console.log(persons.length)
     }
-
+    console.log(persons)
 })
-
-
 
 output.addEventListener('click', e => {
     if(e.target.type == 'button') {
@@ -130,9 +127,11 @@ output.addEventListener('click', e => {
         listPersons()
     }
     else if (e.target.type == 'submit') {
-        firstname.value = "Firtsname";
-        lastname.value = "lastname";
-        email.value = "aa.ss@as.aa";
-        listPersons();
+        const refuser = persons.find(person => person.id === e.target.parentNode.parentNode.id);
+        firstname.value = refuser.firstname;
+        lastname.value = refuser.lastname;
+        email.value = refuser.email;
     }
 })
+
+
