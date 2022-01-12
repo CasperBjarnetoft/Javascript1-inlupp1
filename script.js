@@ -90,34 +90,33 @@ regForm.addEventListener('submit', e => {
             lastname: lastname.value,
             email: email.value,
             completed: false,
+            }
+            persons.push(person)
+            let unique = [];
+            let distinct = [];
+            for( let i = 0; i < persons.length; i++ ){
+            if( !unique[persons[i].email]){
+                distinct.push(persons[i].email);
+                unique[persons[i].email] = 2;
+            }
+            }
             
+            if (distinct.length === persons.length) {
+                listPersons();
+                email.classList.remove('is-invalid')
+                firstname.value = ''
+                lastname.value = ''
+                email.value = ''
+                // console.log(distinct)
+            }
+            else {
+                persons.pop();
+                email.classList.add('is-invalid')
+                valid.innerHTML = `<p>email already exist</p>`
+                email.value = ''
+            }   
+            // console.log(persons.length)
         }
-        persons.push(person)
-        let unique = [];
-        let distinct = [];
-        for( let i = 0; i < persons.length; i++ ){
-        if( !unique[persons[i].email]){g
-            distinct.push(persons[i].email);
-            unique[persons[i].email] = 2;
-        }
-        }
-        
-        if (distinct.length === persons.length) {
-            listPersons();
-            email.classList.remove('is-invalid')
-            firstname.value = ''
-            lastname.value = ''
-            email.value = ''
-            // console.log(distinct)
-        }
-        else {
-            persons.pop();
-            email.classList.add('is-invalid')
-            valid.innerHTML = `<p>email already exist</p>`
-            email.value = ''
-        }   
-        // console.log(persons.length)
-    }
     console.log(persons)
 })
 
