@@ -15,6 +15,8 @@ const lastname = document.querySelector('#lastName')
 const output = document.querySelector('#person')
 const valid = document.querySelector('#validmail')
 
+let newuser = false;
+
 const validateText = (id) => {
     let input = document.querySelector(id)
 
@@ -84,38 +86,75 @@ regForm.addEventListener('submit', e => {
 
     }
     else {
-        const person = {
-            id: Date.now().toString(),
-            firstname: firstname.value,
-            lastname: lastname.value,
-            email: email.value,
-            completed: false,
-            }
-            persons.push(person)
-            let unique = [];
-            let distinct = [];
-            for( let i = 0; i < persons.length; i++ ){
-            if( !unique[persons[i].email]){
-                distinct.push(persons[i].email);
-                unique[persons[i].email] = 2;
-            }
-            }
-            
-            if (distinct.length === persons.length) {
+        if (newuser) {
+            console.log(newuser)
+            const person = {
+                id: Date.now().toString(),
+                firstname: firstname.value,
+                lastname: lastname.value,
+                email: email.value,
+                completed: false,
+                }
+                persons.push(person)
                 listPersons();
-                email.classList.remove('is-invalid')
-                firstname.value = ''
-                lastname.value = ''
-                email.value = ''
-                // console.log(distinct)
-            }
-            else {
-                persons.pop();
-                email.classList.add('is-invalid')
-                valid.innerHTML = `<p>email already exist</p>`
-                email.value = ''
-            }   
-            // console.log(persons.length)
+                let unique = [];
+                let distinct = [];
+                for( let i = 0; i < persons.length; i++ ){
+                if( !unique[persons[i].email]){
+                    distinct.push(persons[i].email);
+                    unique[persons[i].email] = 2;
+                }
+                }
+                
+                if (distinct.length === persons.length) {
+                    listPersons();
+                    email.classList.remove('is-invalid')
+                    firstname.value = ''
+                    lastname.value = ''
+                    email.value = ''
+                }
+                else {
+                    persons.pop();
+                    email.classList.add('is-invalid')
+                    valid.innerHTML = `<p>email already exist</p>`
+                    email.value = ''
+                }
+                newuser = false;
+        }
+        else {
+            const person = {
+                id: Date.now().toString(),
+                firstname: firstname.value,
+                lastname: lastname.value,
+                email: email.value,
+                completed: false,
+                }
+                persons.push(person)
+                let unique = [];
+                let distinct = [];
+                for( let i = 0; i < persons.length; i++ ){
+                if( !unique[persons[i].email]){
+                    distinct.push(persons[i].email);
+                    unique[persons[i].email] = 2;
+                }
+                }
+                
+                if (distinct.length === persons.length) {
+                    listPersons();
+                    email.classList.remove('is-invalid')
+                    firstname.value = ''
+                    lastname.value = ''
+                    email.value = ''
+                    // console.log(distinct)
+                }
+                else {
+                    persons.pop();
+                    email.classList.add('is-invalid')
+                    valid.innerHTML = `<p>email already exist</p>`
+                    email.value = ''
+                }   
+                // console.log(persons.length)
+        }
         }
     console.log(persons)
 })
@@ -130,6 +169,10 @@ output.addEventListener('click', e => {
         firstname.value = refuser.firstname;
         lastname.value = refuser.lastname;
         email.value = refuser.email;
+        newuser = true
+        persons = persons.filter(person => person.id !== e.target.parentNode.parentNode.id);
+        // console.log(persons)
+        // console.log(newuser)
     }
 })
 
