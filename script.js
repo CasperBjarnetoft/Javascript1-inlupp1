@@ -131,7 +131,7 @@ output.addEventListener('click', e => {
         lastname.value = refuser.lastname;
         email.value = refuser.email;
         persons = persons.filter(person => person.id !== e.target.parentNode.parentNode.id);
-        // console.log(persons)        
+        // console.log(persons)      
     }
 })
 
