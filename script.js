@@ -15,6 +15,8 @@ const lastname = document.querySelector('#lastName')
 const output = document.querySelector('#person')
 const valid = document.querySelector('#validmail')
 
+let changeuser = false;
+
 const validateText = (id) => {
     let input = document.querySelector(id)
 
@@ -84,13 +86,50 @@ regForm.addEventListener('submit', e => {
 
     }
     else {
+        if (changeuser) {
+            const newperson = {
+                id: Date.now().toString(),
+                firstname: firstname.value,
+                lastname: lastname.value,
+                email: email.value,
+                completed: false,
+            }
+                persons.splice(persons.indexOf(newperson), 1,  newperson)
+                let unique = [];
+                let distinct = [];
+                for( let i = 0; i < persons.length; i++ ){
+                if( !unique[persons[i].email]){
+                    distinct.push(persons[i].email);
+                    unique[persons[i].email] = 2;
+                }
+                }
+                
+                if (distinct.length === persons.length) {
+                    listPersons();
+                    email.classList.remove('is-invalid')
+                    firstname.value = ''
+                    lastname.value = ''
+                    email.value = ''
+                    // console.log(distinct)
+                    changeuser = false;
+                }
+                else {
+                    email.classList.add('is-invalid')
+                    valid.innerHTML = `<p>email already exist</p>`
+                    email.value = ''
+                }   
+                // console.log(persons.length)
+                
+
+        }
+        else {
             const person = {
                 id: Date.now().toString(),
                 firstname: firstname.value,
                 lastname: lastname.value,
                 email: email.value,
                 completed: false,
-                }
+            }
                 persons.push(person)
                 let unique = [];
                 let distinct = [];
@@ -116,6 +155,7 @@ regForm.addEventListener('submit', e => {
                     email.value = ''
                 }   
                 // console.log(persons.length)
+            }
         }
     console.log(persons)
 })
@@ -130,8 +170,9 @@ output.addEventListener('click', e => {
         firstname.value = refuser.firstname;
         lastname.value = refuser.lastname;
         email.value = refuser.email;
+        changeuser = true;
         persons = persons.filter(person => person.id !== e.target.parentNode.parentNode.id);
-        // console.log(persons)      
+        console.log(persons)      
     }
 })
 
