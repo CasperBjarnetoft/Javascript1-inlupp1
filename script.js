@@ -94,7 +94,7 @@ regForm.addEventListener('submit', e => {
                 email: email.value,
                 completed: false,
             }
-                persons.splice(persons.indexOf(newperson), 1,  newperson)
+                persons.splice(persons.indexOf(newperson), 0,  newperson)
                 let unique = [];
                 let distinct = [];
                 for( let i = 0; i < persons.length; i++ ){
