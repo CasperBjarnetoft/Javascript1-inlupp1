@@ -61,8 +61,8 @@ const listPersons = () => {
         </div>
 
         <div>
-        <button type="submit" id="changevalue" class="btnchange">Change</button>
-        <button type="button" id="resetbutton" class="btndelete">X</button>
+            <button type="submit" id="changevalue" class="btnchange">Change</button>
+            <button type="button" id="resetbutton" class="btndelete">X</button>
         </div>
         `
     })
@@ -111,7 +111,6 @@ regForm.addEventListener('submit', e => {
                 firstname.value = ''
                 lastname.value = ''
                 email.value = ''
-                 // console.log(distinct)
                 changeuser = false;
             }
             else {
@@ -119,7 +118,6 @@ regForm.addEventListener('submit', e => {
                 valid.innerHTML = `<p>email already exist</p>`
                 email.value = ''
             }   
-            // console.log(persons.length)
                                                            
         }
         else {
@@ -146,7 +144,6 @@ regForm.addEventListener('submit', e => {
                     firstname.value = ''
                     lastname.value = ''
                     email.value = ''
-                    // console.log(distinct)
                 }
                 else {
                     persons.pop();
@@ -154,7 +151,6 @@ regForm.addEventListener('submit', e => {
                     valid.innerHTML = `<p>email already exist</p>`
                     email.value = ''
                 }   
-                // console.log(persons.length)
             }
         }
     console.log(persons)
@@ -172,8 +168,7 @@ output.addEventListener('click', e => {
         firstname.value = refuser.firstname;
         lastname.value = refuser.lastname;
         email.value = refuser.email;
-        changeuser = true;
-        // console.log(persons)      
+        changeuser = true;     
     }
 })
 
