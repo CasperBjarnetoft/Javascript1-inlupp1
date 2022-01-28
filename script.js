@@ -1,3 +1,4 @@
+// Makes an array for persons
 let persons = [
     {
         id: "1",
@@ -8,6 +9,7 @@ let persons = [
     }
 ]
 
+// Getting all values
 const regForm = document.querySelector('#regform')
 const email = document.querySelector('#email')
 const firstname = document.querySelector('#firstName')
@@ -15,9 +17,11 @@ const lastname = document.querySelector('#lastName')
 const output = document.querySelector('#person')
 const valid = document.querySelector('#validmail')
 
+// values to change a user
 let userIndex;
 let changeuser = false;
 
+// Validation for text
 const validateText = (id) => {
     let input = document.querySelector(id)
 
@@ -34,6 +38,7 @@ const validateText = (id) => {
     }
 }
 
+// Validation for email
 const validateEmail = (emailInput) => {
     let regEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     if(regEx.test(emailInput.value)) {
@@ -50,6 +55,7 @@ const validateEmail = (emailInput) => {
 
 }
 
+//  Makes HTML for each person
 const listPersons = () => {
     output.innerHTML = '';
     persons.forEach(person => {
@@ -68,12 +74,15 @@ const listPersons = () => {
     })
 }
 
+// Show the array on website
 listPersons();
 
+// What is going to happen when you click the submit button in form
 regForm.addEventListener('submit', e => {
     e.preventDefault();
     const errors = [];
 
+    // Validation for inputs on submit
     for (let i = 0; i< e.currentTarget.length; i++) {
         if (e.currentTarget[i].type === 'text') {
             errors[i] = validateText('#' + e.currentTarget[i].id)
@@ -83,10 +92,12 @@ regForm.addEventListener('submit', e => {
         }
     }
 
+    // if statment to check what to do if the inputs are true or false
     if(errors.includes(false)) {
 
     }
     else {
+        // if statment to check if it is a new user or change user
         if (changeuser) {
             const newperson = {
                 id: Date.now().toString(),
@@ -156,13 +167,17 @@ regForm.addEventListener('submit', e => {
     console.log(persons)
 })
 
-
+// what is going to happen when you click on a button type: button or submit
 output.addEventListener('click', e => {
+    
+    // if statment to see with type it is on the button
     if(e.target.type == 'button') {
+        // thi is for when you want to delete a user
         persons = persons.filter(person => person.id !== e.target.parentNode.parentNode.id);
         listPersons()
     }
     else if (e.target.type == 'submit') {
+        // this is for when you want to change a user
         refuser = persons.find(person => person.id === e.target.parentNode.parentNode.id);
         userIndex = persons.findIndex(person => person.id === e.target.parentNode.parentNode.id)
         firstname.value = refuser.firstname;

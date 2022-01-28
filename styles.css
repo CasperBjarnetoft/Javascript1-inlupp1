@@ -1,3 +1,4 @@
+/* overall styling-start */
 * {
     margin: 0;
     padding: 0;
@@ -66,7 +67,6 @@ p {
     cursor: pointer;
 }
 
-
 .invalid-feedback {
     display: none;
 }
@@ -81,7 +81,9 @@ p {
     width: 100%;
     gap: 60px;
 }
+/*/* overall styling-end */
 
+/* input styling-start */
 .input {
     margin-top: 2rem;
     width: 100%;
@@ -94,7 +96,9 @@ p {
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
+/* input styling-end */
 
+/* output-styling start */
 .output {
     display: flex;
     justify-content: space-between;
@@ -109,5 +113,5 @@ p {
 .email {
     font-size: 0.9rem;
 }
-
+/* output styling-end */
 
